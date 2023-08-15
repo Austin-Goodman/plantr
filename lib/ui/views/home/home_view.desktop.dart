@@ -1,7 +1,14 @@
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:plantr/ui/common/app_colors.dart';
 import 'package:plantr/ui/common/app_constants.dart';
 import 'package:plantr/ui/common/ui_helpers.dart';
 import 'package:flutter/material.dart';
+import 'package:plantr/ui/views/home/widgets/home_image.dart';
+import 'package:plantr/ui/views/home/widgets/home_notify_button.dart';
+import 'package:plantr/ui/views/home/widgets/home_subtitle.dart';
+import 'package:plantr/ui/views/home/widgets/home_title.dart';
+import 'package:plantr/ui/widgets/common/academy_icon.dart';
+import 'package:plantr/ui/widgets/common/input_field.dart';
 import 'package:stacked/stacked.dart';
 
 import 'home_viewmodel.dart';
@@ -12,60 +19,41 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Scaffold(
+      backgroundColor: kcBackgroundColor,
       body: Center(
         child: SizedBox(
           width: kdDesktopMaxContentWidth,
           height: kdDesktopMaxContentHeight,
-          child: Column(
+          child: Row(
             mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              verticalSpaceLarge,
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Hello, DESKTOP UI!',
-                    style: TextStyle(
-                      fontSize: 35,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
+                  const AcademyIcon(),
+                  const Spacer(flex: 2),
+                  const HomeTitle(),
+                  const HomeSubtitle(),
+
+                  // Arrow
                   verticalSpaceMedium,
-                  MaterialButton(
-                    color: Colors.black,
-                    onPressed: viewModel.incrementCounter,
-                    child: Text(
-                      viewModel.counterLabel,
-                      style: const TextStyle(color: Colors.white),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 100),
+                    child: SvgPicture.asset('assets/sign-up-arrow.svg'),
                   ),
+                  verticalSpaceSmall,
+
+                  const Row(
+                    children: [
+                      InputField(),
+                      horizontalSpaceSmall,
+                      HomeNotifyButton()
+                    ],
+                  ),
+                  const Spacer(flex: 3)
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  MaterialButton(
-                    color: kcDarkGreyColor,
-                    onPressed: viewModel.showDialog,
-                    child: const Text(
-                      'Show Dialog',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  MaterialButton(
-                    color: kcDarkGreyColor,
-                    onPressed: viewModel.showBottomSheet,
-                    child: const Text(
-                      'Show Bottom Sheet',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ],
-              )
+              const HomeImage()
             ],
           ),
         ),

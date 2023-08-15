@@ -9,3 +9,7 @@ const Color kcLightGrey = Color.fromARGB(255, 187, 187, 187);
 const Color kcVeryLightGrey = Color(0xFFE3E3E3);
 const Color kcWhite = Color(0xFFFFFFFF);
 const Color kcBackgroundColor = kcDarkGreyColor;
+
+const List<Color> kgTitle = [kcTitleGradientLeft, kcTitleGradientRight];
+const Color kcTitleGradientLeft = Color(0xff0CFF60);
+const Color kcTitleGradientRight = Color(0xff0091FB);

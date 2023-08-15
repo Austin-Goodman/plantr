@@ -14,7 +14,7 @@ class StartupViewModel extends BaseViewModel {
     // you have custom startup logic
 
     if (_authenticationService.userLoggedIn()) {
-      _routerService.replaceWithTextReverseView();
+      _routerService.replaceWithHomeView();
     } else {
       _routerService.replaceWithLoginView();
     }
