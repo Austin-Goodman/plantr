@@ -5,13 +5,18 @@ import 'package:plantr/ui/views/startup/startup_view.dart';
 import 'package:plantr/ui/views/unknown/unknown_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:plantr/ui/views/counter/counter_view.dart';
+import 'package:plantr/ui/views/login/login_view.dart';
+import 'package:plantr/services/authentication_service.dart';
 // @stacked-import
 
 @StackedApp(
   routes: [
     CustomRoute(page: StartupView, initial: true),
     CustomRoute(page: HomeView),
-    // @stacked-route
+    MaterialRoute(page: CounterView),
+    MaterialRoute(page: LoginView),
+// @stacked-route
 
     CustomRoute(page: UnknownView, path: '/404'),
 
@@ -22,7 +27,8 @@ import 'package:stacked_services/stacked_services.dart';
     LazySingleton(classType: BottomSheetService),
     LazySingleton(classType: DialogService),
     LazySingleton(classType: RouterService),
-    // @stacked-service
+    LazySingleton(classType: AuthenticationService),
+// @stacked-service
   ],
   bottomsheets: [
     StackedBottomsheet(classType: NoticeSheet),
