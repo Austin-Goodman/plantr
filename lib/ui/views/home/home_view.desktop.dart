@@ -14,7 +14,8 @@ import 'package:stacked/stacked.dart';
 import 'home_viewmodel.dart';
 
 class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
-  const HomeViewDesktop({super.key});
+  final TextEditingController? controller;
+  const HomeViewDesktop({super.key, this.controller});
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
@@ -43,11 +44,13 @@ class HomeViewDesktop extends ViewModelWidget<HomeViewModel> {
                   ),
                   verticalSpaceSmall,
 
-                  const Row(
+                  Row(
                     children: [
-                      InputField(),
+                      InputField(
+                        controller: controller,
+                      ),
                       horizontalSpaceSmall,
-                      HomeNotifyButton()
+                      HomeNotifyButton(onTap: viewModel.captureEmail)
                     ],
                   ),
                   const Spacer(flex: 3)
