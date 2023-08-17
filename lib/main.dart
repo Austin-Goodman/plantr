@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:plantr/firebase_options.dart';
 import 'package:plantr/ui/common/app_colors.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:plantr/app/app.bottomsheets.dart';
@@ -15,6 +17,11 @@ Future<void> main() async {
   await setupLocator(stackedRouter: stackedRouter);
   setupDialogUi();
   setupBottomSheetUi();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MainApp());
 }
 
